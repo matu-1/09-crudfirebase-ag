@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="col">
+    <h3>Heroe <small>Crear</small></h3>
+    <hr />
+  </div>
+</div>
+<form class="row g-3" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="col-sm-6">
+    <label for="firebaseId" class="form-label">Firebase Id</label>
+    <input
+      type="text"
+      class="form-control"
+      id="firebaseId"
+      formControlName="id"
+    />
+    <div class="form-text">Este campo es autogenerado</div>
+  </div>
+  <div class="col-sm-6">
+    <label for="nombre" class="form-label">Nombre</label>
+    <input
+      type="text"
+      class="form-control"
+      id="nombre"
+      formControlName="nombre"
+    />
+  </div>
+  <div class="col-sm-6">
+    <label for="Poder" class="form-label">Poder</label>
+    <input
+      type="text"
+      class="form-control"
+      id="Poder"
+      formControlName="poder"
+    />
+  </div>
+  <div class="col-sm-6">
+    <label class="form-label d-block">Estado</label>
+    <button
+      class="btn btn-outline-success px-5"
+      *ngIf="form.get('isVivo')?.value"
+      (click)="form.get('isVivo')?.setValue(false)"
+    >
+      <i class="fas fa-smile"></i>
+      Vivo
+    </button>
+    <button
+      class="btn btn-outline-danger px-5"
+      *ngIf="!form.get('isVivo')?.value"
+      (click)="form.get('isVivo')?.setValue(true)"
+    >
+      <i class="fas fa-dizzy"></i>
+      Muerto
+    </button>
+  </div>
+  <div class="text-end">
+    <button type="button" class="btn btn-secondary me-1" routerLink="/heroes">
+      <i class="fas fa-arrow-left"></i>
+      Regresar
+    </button>
+    <button class="btn btn-primary" [disabled]="form.invalid">
+      <i class="fas fa-save"></i>
+      Guardar
+    </button>
+  </div>
+</form>
